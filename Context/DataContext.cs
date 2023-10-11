@@ -3,22 +3,45 @@ using PruebaTecnica.Model;
 
 namespace PruebaTecnica.Context;
 
+/// <summary>
+/// Contexto de datos para la aplicación.
+/// </summary>
 public partial class DataContext : DbContext
 {
+    /// <summary>
+    /// Contexto de datos para la aplicación.
+    /// </summary>
     public DataContext()
     {
     }
 
+    /// <summary>
+    /// Contexto de datos para la aplicación.
+    /// </summary>
+    /// <param name="options">Opciones del contexto de datos.</param>
     public DataContext(DbContextOptions<DataContext> options): base(options)
     {
     }
 
+    /// <summary>
+    /// Conjunto de datos de productos.
+    /// </summary>
     public virtual DbSet<Product> Products { get; set; }
 
+    /// <summary>
+    /// Conjunto de datos de ventas.
+    /// </summary>
     public virtual DbSet<Sale> Sales { get; set; }
 
+    /// <summary>
+    /// Conjunto de datos de detalles de ventas.
+    /// </summary>
     public virtual DbSet<SaleDetail> SaleDetails { get; set; }
 
+    /// <summary>
+    /// Configura el modelo de datos.
+    /// </summary>
+    /// <param name="modelBuilder">Creador del modelo.</param>
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Product>(entity =>
