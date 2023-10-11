@@ -1,6 +1,9 @@
-CREATE DATABASE prueba_tecnica;
-
+--CREATE DATABASE prueba_tecnica;
 USE prueba_tecnica;
+
+DROP TABLE sale_detail;
+DROP TABLE product;
+DROP TABLE sale;
 
 -- BASE DE DATOS NORMALIZADA HASTA LA FORMA NORMAL DE BOYCE-CODD (BCNF)
 CREATE TABLE product (
@@ -9,6 +12,8 @@ CREATE TABLE product (
   price MONEY NOT NULL,
   image VARCHAR(255),
   stock INT DEFAULT 0,
+  createdAt DATETIME DEFAULT GETDATE(),
+  updatedAt DATETIME DEFAULT GETDATE()
 
   PRIMARY KEY (id)
 );
@@ -16,6 +21,8 @@ CREATE TABLE product (
 CREATE TABLE sale (
   id INT IDENTITY(1,1),
   total MONEY NOT NULL,
+  createdAt DATETIME DEFAULT GETDATE(),
+  updatedAt DATETIME DEFAULT GETDATE()
 
   PRIMARY KEY (id)
 );
@@ -26,6 +33,8 @@ CREATE TABLE sale_detail (
   idProduct INT NOT NULL,
   amount INT NOT NULL,
   subTotal MONEY NOT NULL,
+  createdAt DATETIME DEFAULT GETDATE(),
+  updatedAt DATETIME DEFAULT GETDATE(),
 
   CONSTRAINT fkProduct FOREIGN KEY (idProduct) REFERENCES product(id),
   CONSTRAINT fkSale FOREIGN KEY (idSale) REFERENCES sale(id)
