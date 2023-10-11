@@ -1,0 +1,32 @@
+CREATE DATABASE prueba_tecnica;
+
+USE prueba_tecnica;
+
+-- BASE DE DATOS NORMALIZADA HASTA LA FORMA NORMAL DE BOYCE-CODD (BCNF)
+CREATE TABLE product (
+  id INT IDENTITY(1,1),
+  name VARCHAR(255) NOT NULL,
+  price MONEY NOT NULL,
+  image VARCHAR(255),
+  stock INT DEFAULT 0,
+
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE sale (
+  id INT IDENTITY(1,1),
+  total MONEY NOT NULL,
+
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE sale_detail (
+  id INT IDENTITY(1,1) PRIMARY KEY,
+  idSale INT NOT NULL,
+  idProduct INT NOT NULL,
+  amount INT NOT NULL,
+  subTotal MONEY NOT NULL,
+
+  CONSTRAINT fkProduct FOREIGN KEY (idProduct) REFERENCES product(id),
+  CONSTRAINT fkSale FOREIGN KEY (idSale) REFERENCES sale(id)
+);
