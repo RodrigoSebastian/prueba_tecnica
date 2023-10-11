@@ -29,10 +29,12 @@ namespace PruebaTecnica.Service
             return response;
           }
 
-          var saleDetail = new SaleDetail();
-          saleDetail.IdProduct = product.Id;
-          saleDetail.Amount = saleParam.Amount;
-          saleDetail.SubTotal = product.Price * saleParam.Amount;
+          var saleDetail = new SaleDetail
+          {
+            IdProduct = product.Id,
+            Amount = saleParam.Amount,
+            SubTotal = product.Price * saleParam.Amount
+          };
 
           sale.SaleDetails.Add(saleDetail);
         }

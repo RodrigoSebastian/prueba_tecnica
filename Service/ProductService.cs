@@ -47,7 +47,6 @@ namespace PruebaTecnica.Service
         }
         else {
           response.StatusCode = 404;
-          response.Result = null;
           response.Message = "Product not found";
         }
       }
@@ -66,6 +65,7 @@ namespace PruebaTecnica.Service
 
       APIResponse<Product> response = new APIResponse<Product>();
       if (product != null) response.Result = product;
+      else response.StatusCode = 404; response.Message = "Product not found";
 
       return response;
     }
@@ -93,7 +93,6 @@ namespace PruebaTecnica.Service
         }
         else {
           response.StatusCode = 404;
-          response.Result = null;
           response.Message = "Product not found";
         }
       }
