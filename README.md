@@ -1,4 +1,4 @@
-# Prueba Tecnica V.1
+# Prueba Tecnica V.2
 
 ## Rodrigo Sebastian de la Rosa Andrés
 
