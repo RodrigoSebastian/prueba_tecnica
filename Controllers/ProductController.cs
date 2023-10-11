@@ -23,7 +23,7 @@ namespace PruebaTecnica.Controllers
     [HttpGet("{id}")]
     public async Task<IActionResult> GetProduct(int id) {
       var data = await _service.Get(id);
-      return data != null ? Ok(data) : NotFound();
+      return Ok(data);
     }
 
     [HttpPost]

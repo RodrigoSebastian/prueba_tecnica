@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 
 namespace PruebaTecnica.Model;
@@ -31,10 +32,12 @@ public partial class SaleDetail
     [Column("updatedAt", TypeName = "datetime")]
     public DateTime? UpdatedAt { get; set; }
 
+    [JsonIgnore]
     [ForeignKey("IdProduct")]
     [InverseProperty("SaleDetails")]
     public virtual Product IdProductNavigation { get; set; } = null!;
 
+    [JsonIgnore]
     [ForeignKey("IdSale")]
     [InverseProperty("SaleDetails")]
     public virtual Sale IdSaleNavigation { get; set; } = null!;

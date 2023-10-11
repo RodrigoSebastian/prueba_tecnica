@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
 namespace PruebaTecnica.Model;
 
@@ -24,4 +21,9 @@ public partial class Sale
 
     [InverseProperty("IdSaleNavigation")]
     public virtual ICollection<SaleDetail> SaleDetails { get; set; } = new List<SaleDetail>();
+}
+
+public partial class SaleParams {
+  public int ProductId { get; set; }
+  public int Amount { get; set; }
 }

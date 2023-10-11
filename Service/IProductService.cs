@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
 using PruebaTecnica.Helper;
 using PruebaTecnica.Model;
 
