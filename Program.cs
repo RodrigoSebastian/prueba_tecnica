@@ -1,5 +1,6 @@
 using PruebaTecnica.Context;
 using Microsoft.EntityFrameworkCore;
+using PruebaTecnica.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +10,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<LearndataContext>(o => o.UseSqlServer(builder.Configuration.GetConnectionString("db.connection")));
+
+builder.Services.AddTransient<IProductService, ProductService>();
+
+builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("db.connection")));
 
 var app = builder.Build();
 

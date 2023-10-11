@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 
 namespace PruebaTecnica.Model;
@@ -35,6 +34,7 @@ public partial class Product
     [Column("updatedAt", TypeName = "datetime")]
     public DateTime? UpdatedAt { get; set; }
 
+    [JsonIgnore]
     [InverseProperty("IdProductNavigation")]
     public virtual ICollection<SaleDetail> SaleDetails { get; set; } = new List<SaleDetail>();
 }

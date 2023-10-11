@@ -5,14 +5,13 @@ using PruebaTecnica.Model;
 
 namespace PruebaTecnica.Context;
 
-public partial class LearndataContext : DbContext
+public partial class DataContext : DbContext
 {
-    public LearndataContext()
+    public DataContext()
     {
     }
 
-    public LearndataContext(DbContextOptions<LearndataContext> options)
-        : base(options)
+    public DataContext(DbContextOptions<DataContext> options): base(options)
     {
     }
 
